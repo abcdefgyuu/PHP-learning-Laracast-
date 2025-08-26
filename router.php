@@ -3,6 +3,8 @@ $uri = $_SERVER['REQUEST_URI'];
 
 
 $routes = [
+  '/learning' => 'controllers/index.php',
+  '/learning/' => 'controllers/index.php',
   '/learning/index.php' => 'controllers/index.php',
   '/learning/about.php' => 'controllers/about.php',
   '/learning/contact.php' => 'controllers/contact.php',
