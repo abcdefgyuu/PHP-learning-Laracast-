@@ -30,11 +30,11 @@ class Database
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
   }
-  public function query($query)
+  public function query($query ,$params = [])
   {
 
     $statement = $this->connection->prepare($query); //1.write statement to prepare
-    $statement->execute(); //2.execute the statement
+    $statement->execute($params); //2.execute the statement
 
     return $statement;
   }

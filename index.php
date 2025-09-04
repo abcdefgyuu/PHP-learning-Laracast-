@@ -1,14 +1,16 @@
 <?php
 require 'functions.php';
-require 'Database.php';
+require 'Database.php';  //db first
 require 'router.php';
 
 
-$db = new Database(); 
 
-$sql = 'SELECT * FROM posts'; 
-$posts = $db->query($sql)->fetchAll(); //fetch results
 
-dd($posts);
+//$id = $_GET['id'] ;
+//
+//$sql = 'SELECT * FROM posts where id = :id;'; //binding param
+//$posts = $db->query($sql,['id'=>$id])->fetchAll(); //fetch results
+//
+//dd($posts);
 
    
