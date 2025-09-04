@@ -17,9 +17,8 @@ $routes = [
 if(array_key_exists($parsedUri, $routes)) {
   require $routes[$parsedUri];
 } 
-//else {
-//  http_response_code(404);
-//  require 'views/404.php';
-//  die();
-//}
-//}
+else {
+  http_response_code(404);
+  require 'views/404.php';
+  die();
+}
