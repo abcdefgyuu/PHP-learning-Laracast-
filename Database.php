@@ -8,6 +8,7 @@ class Database
 {
 
   public $connection;
+  public $statement;
 
   public function __construct()
   {
@@ -26,17 +27,35 @@ class Database
 
     $dsn = 'mysql:' . http_build_query($config, '', ';');
 
-    $this->connection = new PDO($dsn, $username, $password,[
+    $this->connection = new PDO($dsn, $username, $password, [
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
   }
-  public function query($query ,$params = [])
+  public function query($query, $params = [])
   {
 
-    $statement = $this->connection->prepare($query); //1.write statement to prepare
-    $statement->execute($params); //2.execute the statement
+    $this->statement = $this->connection->prepare($query); //1.write statement to prepare
+    $this->statement->execute($params); //2.execute the statement
 
-    return $statement;
+    return $this;
+  }
+
+  public function find()
+  {
+    return $this->statement->fetch();
+  }
+
+  public function getAll()
+  {
+    return $this->statement->fetchAll();
+  }
+
+  public function findOrFail()
+  {
+    $result = $this->find();
+    if (!$result) {
+      abort();
+    }
+    return $result;
   }
 }
-
