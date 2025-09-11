@@ -12,6 +12,7 @@ $routes = [
   '/learning/contact' => 'controllers/contact.php',
   '/learning/notes' => 'controllers/notes.php',
   '/learning/note' => 'controllers/note.php',
+  '/learning/notes/create' => 'controllers/note-create.php',
 ];
 
 if(array_key_exists($parsedUri, $routes)) {
