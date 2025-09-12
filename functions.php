@@ -20,5 +20,13 @@ function abort($code = 404) {
   http_response_code($code);  
   require "views/{$code}.php";
   die();
+}
 
+function base_path($path){
+  return BASE_PATH . $path;
+}
+
+function view($path,$attribute=[]) {
+  extract($attribute);
+  require base_path('views/'.$path);
 }

@@ -1,8 +1,5 @@
 <?php
 $db = new Database();
-$heading = "Note Detail";
-
-
 
 $note = $db->query(
   "SELECT * FROM notes where id=:id",
@@ -12,10 +9,12 @@ $note = $db->query(
 )->findOrFail();
 
 
-$currentUserId = "1"; 
-
 //if ($note['user_id'] !== $currentUserId) {
 //  abort();
 //}
 
-require "views/note.view.php";
+view('notes/show.view.php',[
+  "heading"=>"Note Detail",
+  "note" => $note,
+  "currentUserId" => "1"
+]);
