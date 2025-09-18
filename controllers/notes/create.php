@@ -1,7 +1,9 @@
 <?php
-require 'Validator.php';
+
+use Core\Database;
+use Core\Validator;
+
 $db = new Database();
-$heading = "Create Note";
 
   $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,4 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-require "views/note-create.view.php";
+view('notes/create.view.php',[
+  "heading"=>"Create Note",
+  "errors" => $errors
+]);
