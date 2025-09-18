@@ -13,6 +13,7 @@ class Router
       "controller" => $controller,
       "method" => $method
     ];
+
   }
 
 
@@ -40,6 +41,7 @@ class Router
   {
     $this->add("PATCH", $uri, $controller);
   }
+
 
   public function route($uri, $requestMethod)
   {
