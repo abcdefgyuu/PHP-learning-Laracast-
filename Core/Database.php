@@ -1,6 +1,7 @@
 <?php
 
-
+namespace Core;
+use PDO;
 // Connect to database with PDO
 //connect to database and execute query
 

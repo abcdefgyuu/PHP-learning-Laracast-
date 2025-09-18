@@ -3,13 +3,13 @@
 
 
  <main>
-   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-     <h2 class="text-xl text-center">Opps! Page Not Found.</h2>
-     <p class="text-center mt-4">
-       404 Error - The page you are looking for does not exist.
-       <br>
-      Go back to the <a href="index.php" class="text-blue-500 underline">home page</a>.
-     </p>
+   <div class="flex justify-center h-[80vh] items-center sm:px-6 lg:px-8 text-center">
+     <!-- Your content -->
+      <div>
+        <p class="text-lg">Opps! Page Not Found.</p>
+      <p>404 Error - The page you are looking for does not exist.</p>
+      <p>Go back to the <a href="/" class="text-blue-500 underline">home page.</a></p>
+      </div>
    </div>
  </main>
 
