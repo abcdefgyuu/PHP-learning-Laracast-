@@ -36,3 +36,18 @@ function view($path, $attribute = [])
   extract($attribute);
   require base_path('views/' . $path);
 }
+
+function login($user)
+{
+  $_SESSION['user'] = [
+    'email' => $user['email']
+  ];
+}
+
+function logout()
+{
+  $_SESSION = [];
+  session_destroy();
+  header('Location: /');
+  exit();
+}
