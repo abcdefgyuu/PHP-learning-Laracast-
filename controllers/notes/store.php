@@ -5,6 +5,7 @@ use Core\Database;
 
 $db = new Database();
 
+
 $errors = [];
 
 if (!Validator::string($_POST['body'])) { //check if body is empty

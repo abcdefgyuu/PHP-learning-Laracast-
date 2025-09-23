@@ -8,10 +8,10 @@
          <div class="hidden md:block">
            <div class="ml-10 flex items-baseline space-x-4">
              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-             <a href="/" aria-current="page" class="<?= urlIs('/') ? 'bg-slate-300 text-gray-900' : 'text-gray-300';?> rounded-md px-3 py-2 text-sm font-medium">Home</a>
-             <a href="/about" class="<?= urlIs('/about') ? 'bg-slate-300 text-gray-900' : 'text-gray-300';?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">About Us</a>
-             <a href="/notes" class="<?= urlIs('/notes') ? 'bg-slate-300 text-gray-900' : 'text-gray-300';?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">Notes</a>
-             <a href="/contact" class="<?= urlIs('/contact') ? 'bg-slate-300 text-gray-900' : 'text-gray-300';?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">Contact</a>
+             <a href="/" aria-current="page" class="<?= urlIs('/') ? 'bg-slate-300 text-gray-900' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium">Home</a>
+             <a href="/about" class="<?= urlIs('/about') ? 'bg-slate-300 text-gray-900' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">About Us</a>
+             <a href="/notes" class="<?= urlIs('/notes') ? 'bg-slate-300 text-gray-900' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">Notes</a>
+             <a href="/contact" class="<?= urlIs('/contact') ? 'bg-slate-300 text-gray-900' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 hover:text-white">Contact</a>
            </div>
          </div>
        </div>
@@ -26,23 +26,27 @@
            </button>
 
            <!-- Profile dropdown -->
-          <?php if($_SESSION['user'] ?? false): ?>
-           <el-dropdown class="relative ml-3">
-             <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-               <span class="absolute -inset-1.5"></span>
-               <span class="sr-only">Open user menu</span>
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline outline-1 -outline-offset-1 outline-white/10" />
-             </button>
+           <?php if ($_SESSION['user'] ?? false): ?>
+             <el-dropdown class="relative ml-3">
+               <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                 <span class="absolute -inset-1.5"></span>
+                 <span class="sr-only">Open user menu</span>
+                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline outline-1 -outline-offset-1 outline-white/10" />
+               </button>
 
-             <el-menu anchor="bottom end" popover class="m-0 w-48 origin-top-right rounded-md bg-white p-0 py-1 shadow-lg outline outline-1 outline-black/5 transition [--anchor-gap:theme(spacing.2)] [transition-behavior:allow-discrete] data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-               <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Your profile</a>
-               <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Settings</a>
-               <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Sign out</a>
-             </el-menu>
-           </el-dropdown>
-           <?php else:?>
-                <a href="/register" class="text-blue-200 ml-3">Register</a>
-            <?php endif;?>
+               <el-menu anchor="bottom end" popover class="m-0 w-48 origin-top-right rounded-md bg-white p-0 py-1 shadow-lg outline outline-1 outline-black/5 transition [--anchor-gap:theme(spacing.2)] [transition-behavior:allow-discrete] data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
+                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Your profile</a>
+                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Settings</a>
+                 <form method="POST" action="/sessions">
+                   <input type="hidden" name="_method" value="DELETE">
+                   <button type="submit" class="block w-full px-4 py-2 text-sm text-left text-gray-700 focus:bg-gray-100 focus:outline-none">Log Out</button>
+                 </form>
+               </el-menu>
+             </el-dropdown>
+           <?php else: ?>
+             <a href="/register" class="text-sm text-blue-100 ml-3 hover:text-white">Register</a>
+             <a href="/login" class="text-gray-300 ml-3 text-sm font-medium hover:text-white">Log in</a>
+           <?php endif; ?>
          </div>
        </div>
        <div class="-mr-2 flex md:hidden">
